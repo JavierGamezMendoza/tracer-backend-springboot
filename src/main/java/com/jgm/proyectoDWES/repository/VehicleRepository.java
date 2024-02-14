@@ -5,9 +5,9 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.jgm.proyectoDWES.entities.Pelicula;
+import com.jgm.proyectoDWES.entities.Vehicle;
 
 @Repository
-public interface PeliculaRepository extends JpaRepository<Pelicula, Long> {
+public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
 
 }

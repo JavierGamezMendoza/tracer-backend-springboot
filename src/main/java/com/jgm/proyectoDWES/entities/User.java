@@ -15,7 +15,7 @@ import jakarta.transaction.Transactional;
 
 
 @Entity
-public class Usuario implements UserDetails {
+public class User implements UserDetails {
 	  private static final long serialVersionUID = 1L;
 	  	@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +28,8 @@ public class Usuario implements UserDetails {
 
 	    @ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
 	    @Enumerated(EnumType.STRING)
-	    @CollectionTable(name="usuario_rol")
-	    @Column(name ="RolesUsuario")
+	    @CollectionTable(name="user_role")
+	    @Column(name ="UserRoles")
 	    private Set<Role> roles = new HashSet<>();
 
 

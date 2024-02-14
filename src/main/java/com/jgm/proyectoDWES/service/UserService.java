@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import com.dwes.security.dto.response.user.UsuarioResponse;
+import com.jgm.proyectoDWES.dto.response.user.UserResponse;
 
 public interface UserService {
     UserDetailsService userDetailsService();
-    List<UsuarioResponse> getAllUsers();
+    List<UserResponse> getAllUsers();
 }
