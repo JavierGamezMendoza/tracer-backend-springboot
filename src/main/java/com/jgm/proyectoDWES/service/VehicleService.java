@@ -16,7 +16,7 @@ public interface VehicleService {
 
     Vehicle getVehicleById(Long id);
 
-    Vehicle updateVehicle(Long id, Vehicle pelicula);
+    Vehicle updateVehicle(Long id, Vehicle brand);
 
     void deleteVehicle(Long id);
    
