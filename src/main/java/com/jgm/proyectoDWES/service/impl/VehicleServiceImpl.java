@@ -5,15 +5,16 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.jgm.proyectoDWES.entities.Vehicle;
-import com.jgm.proyectoDWES.entities.VehicleType;
-import com.jgm.proyectoDWES.error.exception.PeliculaNotFoundException;
+import com.jgm.proyectoDWES.error.exception.VehicleNotFoundException;
 import com.jgm.proyectoDWES.repository.VehicleRepository;
 import com.jgm.proyectoDWES.service.VehicleService;
 
 import jakarta.validation.Valid;
 
+@Service
 public class VehicleServiceImpl implements VehicleService{
 	@Autowired
 	private VehicleRepository veRep;
@@ -31,20 +32,19 @@ public class VehicleServiceImpl implements VehicleService{
 	@Override
 	public Vehicle getVehicleById(Long id) {
 		return veRep.findById(id)
-	            .orElseThrow(() -> new PeliculaNotFoundException("Pelicula no encontrada"));
+	            .orElseThrow(() -> new VehicleNotFoundException("Pelicula no encontrada"));
 	}
 	
 	@Override
-	public Vehicle updateVehicle(Long id, Vehicle pelicula) {
+	public Vehicle updateVehicle(Long id, Vehicle vehicle) {
 		Vehicle newVehicle = getVehicleById(id);
-		newVehicle.setBrand(pelicula.getBrand());
-		newVehicle.setModel(pelicula.getModel());
-		newVehicle.setVehicleType(pelicula.getVehicleType());
-		newVehicle.setProductionDate(pelicula.getProductionDate());
-		newVehicle.setEngine(pelicula.getEngine());
+		newVehicle.setBrand(vehicle.getBrand());
+		newVehicle.setModel(vehicle.getModel());
+		newVehicle.setProductionDate(vehicle.getProductionDate());
+		newVehicle.setEngine(vehicle.getEngine());
 		
 		
-	    return veRep.save(pelicula);
+	    return veRep.save(vehicle);
 	}
 	
 	@Override

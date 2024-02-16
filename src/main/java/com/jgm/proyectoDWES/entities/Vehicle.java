@@ -7,17 +7,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Vehicle {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	private VehicleType vehicleType;
-	private String brand;
+	@ManyToOne
+    @JoinColumn(name = "brand_id")
+	private Brand brand;
     private String model;
     private Integer productionDate;
-    private String engine;
+    @ManyToOne
+    @JoinColumn(name = "engine_id")
+	private Engine engine;
     
     
 	public Long getId() {
@@ -26,10 +32,10 @@ public class Vehicle {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getBrand() {
+	public Brand getBrand() {
 		return brand;
 	}
-	public void setBrand(String brand) {
+	public void setBrand(Brand brand) {
 		this.brand = brand;
 	}
 	public String getModel() {
@@ -44,19 +50,12 @@ public class Vehicle {
 	public void setProductionDate(Integer productionDate) {
 		this.productionDate = productionDate;
 	}
-	public String getEngine() {
+	public Engine getEngine() {
 		return engine;
 	}
-	public void setEngine(String engine) {
+	public void setEngine(Engine engine) {
 		this.engine = engine;
 	}
-	public VehicleType getVehicleType() {
-		return vehicleType;
-	}
-	public void setVehicleType(VehicleType vehicleType) {
-		this.vehicleType = vehicleType;
-	}
-    
     
 	
     
