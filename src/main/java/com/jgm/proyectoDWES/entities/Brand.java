@@ -17,9 +17,6 @@ public class Brand {
 	private String name;
 	private String country;
 	private String company;
-	
-	@OneToMany(mappedBy = "brand")
-	private Set<Vehicle> vehicles;
 
 	public Long getId() {
 		return id;
@@ -52,15 +49,6 @@ public class Brand {
 	public void setCompany(String company) {
 		this.company = company;
 	}
-
-	public Set<Vehicle> getVehicles() {
-		return vehicles;
-	}
-
-	public void setVehicles(Set<Vehicle> vehicles) {
-		this.vehicles = vehicles;
-	}
-	
 	
 	
 }

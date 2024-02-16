@@ -12,6 +12,8 @@ import com.jgm.proyectoDWES.entities.Brand;
 import com.jgm.proyectoDWES.entities.Engine;
 import com.jgm.proyectoDWES.entities.Role;
 import com.jgm.proyectoDWES.entities.Vehicle;
+import com.jgm.proyectoDWES.repository.BrandRepository;
+import com.jgm.proyectoDWES.repository.EngineRepository;
 import com.jgm.proyectoDWES.repository.VehicleRepository;
 
 
@@ -25,7 +27,13 @@ public class InitializationData implements CommandLineRunner{
     
     @Autowired
     private VehicleRepository vehicleRepository;
-
+    
+    @Autowired
+    private BrandRepository brandRepository;
+    
+    @Autowired
+    private EngineRepository engineRepository;
+    
     @Override
     public void run(String... args) throws Exception {
     	
@@ -38,17 +46,25 @@ public class InitializationData implements CommandLineRunner{
     	brand.setCompany("Fiat");
     	brand.setCountry("Italy");
     	
+    	brandRepository.save(brand);
+    	
     	Engine engine = new Engine();
-    	engine.setEngine_denomination("Twin-turbocharged 2.9L V8");
+    	engine.setEngine_denomination("Twin-turbocharged 2.9L");
+    	engine.setCylinders("V8");
     	engine.setFuel_type("gas");
     	engine.setHorsepower("471 hp @ 7,000 rpm");
     	engine.setTransmission("manual");
+    	
+    	engineRepository.save(engine);
     	
     	Vehicle vehicle = new Vehicle();
     	vehicle.setBrand(brand);
     	vehicle.setEngine(engine);
     	vehicle.setModel("F40");
     	vehicle.setProductionDate(1987);
+    	
+    	vehicleRepository.save(vehicle);
+    	
     	
     }
 }

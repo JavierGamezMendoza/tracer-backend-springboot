@@ -54,6 +54,12 @@ public class Engine {
 	public void setTransmission(String transmission) {
 		this.transmission = transmission;
 	}
+	public String getCylinders() {
+		return cylinders;
+	}
+	public void setCylinders(String cylinders) {
+		this.cylinders = cylinders;
+	}
 
 	
 	

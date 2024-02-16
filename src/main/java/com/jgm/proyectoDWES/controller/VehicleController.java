@@ -29,53 +29,43 @@ import com.jgm.proyectoDWES.service.VehicleService;
 
 import jakarta.persistence.EntityNotFoundException;
 
+@RestController
+@RequestMapping("/api/v1/vehicles")
+public class VehicleController {
 
-	@RestController
-	@RequestMapping("/api/v1/vehicles")
-	public class VehicleController {
+	@Autowired
+	private VehicleService veSer;
 
+	// Endpoint para obtener un listado de libros, accesible solo por ROLE_USER
+	@GetMapping
+	public ResponseEntity<Page<Vehicle>> listAllVehicles(@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "10") int size) {
 
-	    @Autowired
-	    private VehicleService veSer;
+		// logger.info("LibrosController :: listarTodosLosLibros");
+		Pageable pageable = PageRequest.of(page, size);
+		Page<Vehicle> vehicles = veSer.listAllVehicles(pageable);
 
-	    // Endpoint para obtener un listado de libros, accesible solo por ROLE_USER
-	    @GetMapping
-	    public ResponseEntity<Page<Vehicle>> listAllVehicles(
-	            @RequestParam(defaultValue = "0") int page,
-	            @RequestParam(defaultValue = "10") int size) {
-	        
-	        //logger.info("LibrosController :: listarTodosLosLibros");
-	        Pageable pageable = PageRequest.of(page, size);
-	        Page<Vehicle> vehicles = veSer.listAllVehicles(pageable);
-	        
-	   
-	        
-	        return new ResponseEntity<>(vehicles, HttpStatus.OK);
-	    }
-	    
-	    @GetMapping("/{id}")
-	    public Vehicle getVehicleById(@PathVariable Long id) {
-	        return veSer.getVehicleById(id);
-	    }
+		return new ResponseEntity<>(vehicles, HttpStatus.OK);
+	}
 
-	    @PostMapping
-	    public Vehicle addVehicle(@RequestBody Vehicle vehicle) {
-	        return veSer.addVehicle(vehicle);
-	    }
+	@GetMapping("/{id}")
+	public Vehicle getVehicleById(@PathVariable Long id) {
+		return veSer.getVehicleById(id);
+	}
 
-	    @PutMapping("/{id}")
-	    public Vehicle updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicleDetails) {
-	        return veSer.updateVehicle(id, vehicleDetails);
-	    }
+	@PostMapping
+	public Vehicle addVehicle(@RequestBody Vehicle vehicle) {
+		return veSer.addVehicle(vehicle);
+	}
 
+	@PutMapping("/{id}")
+	public Vehicle updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicleDetails) {
+		return veSer.updateVehicle(id, vehicleDetails);
+	}
 
-	    @DeleteMapping("/{id}")
-	    public void deleteVehicle(@PathVariable Long id) {
-	    	veSer.deleteVehicle(id);
-	    }
+	@DeleteMapping("/{id}")
+	public void deleteVehicle(@PathVariable Long id) {
+		veSer.deleteVehicle(id);
+	}
 
 }
-	    
-	    
-	    
-	
