@@ -13,10 +13,10 @@ public class Engine {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String engine_type;
+	private String engine_denomination;
 	private String fuel_type;
 	private String cylinders;
-	private Integer horsepower;
+	private String horsepower;
 	private String transmission;
 	
 	@OneToMany(mappedBy = "engine")
@@ -28,11 +28,11 @@ public class Engine {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getEngine_type() {
-		return engine_type;
+	public String getEngine_denomination() {
+		return engine_denomination;
 	}
-	public void setEngine_type(String engine_type) {
-		this.engine_type = engine_type;
+	public void setEngine_denomination(String engine_type) {
+		this.engine_denomination = engine_type;
 	}
 	public String getFuel_type() {
 		return fuel_type;
@@ -41,10 +41,10 @@ public class Engine {
 		this.fuel_type = fuel_type;
 	}
 
-	public Integer getHorsepower() {
+	public String getHorsepower() {
 		return horsepower;
 	}
-	public void setHorsepower(Integer horsepower) {
+	public void setHorsepower(String horsepower) {
 		this.horsepower = horsepower;
 	}
 

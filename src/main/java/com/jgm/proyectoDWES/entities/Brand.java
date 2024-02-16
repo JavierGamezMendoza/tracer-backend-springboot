@@ -16,7 +16,7 @@ public class Brand {
 	private Long id;
 	private String name;
 	private String country;
-	private String group;
+	private String company;
 	
 	@OneToMany(mappedBy = "brand")
 	private Set<Vehicle> vehicles;
@@ -45,12 +45,12 @@ public class Brand {
 		this.country = country;
 	}
 
-	public String getGroup() {
-		return group;
+	public String getCompany() {
+		return company;
 	}
 
-	public void setGroup(String group) {
-		this.group = group;
+	public void setCompany(String company) {
+		this.company = company;
 	}
 
 	public Set<Vehicle> getVehicles() {

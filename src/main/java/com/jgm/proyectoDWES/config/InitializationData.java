@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.github.javafaker.Faker;
+import com.jgm.proyectoDWES.entities.Brand;
+import com.jgm.proyectoDWES.entities.Engine;
 import com.jgm.proyectoDWES.entities.Role;
 import com.jgm.proyectoDWES.entities.Vehicle;
 import com.jgm.proyectoDWES.repository.VehicleRepository;
@@ -31,18 +33,22 @@ public class InitializationData implements CommandLineRunner{
             vehicleRepository.deleteAll(); // Borra todos los libros existentes
         }
     	
-
-    	Faker faker = new Faker(new Locale("es"));
-        for (int i = 0; i < 10; i++) {
-        	
-        	Vehicle vehicle = new Vehicle();
-        	
-        	vehicle.setBrand(faker.options().option());
-            vehicle.setModel(faker.options().option("Camry", "Corolla", "Accord", "Civic", "F-150", "Silverado", "3 Series", "C-Class"));
-            vehicle.setProductionDate(faker.number().numberBetween(1980, 2024));
-  
-            vehicleRepository.save(vehicle);
-        }
-        
+    	Brand brand = new Brand();
+    	brand.setName("Ferrari");
+    	brand.setCompany("Fiat");
+    	brand.setCountry("Italy");
+    	
+    	Engine engine = new Engine();
+    	engine.setEngine_denomination("Twin-turbocharged 2.9L V8");
+    	engine.setFuel_type("gas");
+    	engine.setHorsepower("471 hp @ 7,000 rpm");
+    	engine.setTransmission("manual");
+    	
+    	Vehicle vehicle = new Vehicle();
+    	vehicle.setBrand(brand);
+    	vehicle.setEngine(engine);
+    	vehicle.setModel("F40");
+    	vehicle.setProductionDate(1987);
+    	
     }
 }
