@@ -36,8 +36,8 @@ public class EngineServiceImpl implements EngineService{
 	@Override
 	public Engine updateEngine(Long id, Engine engine) {
 		Engine newEngine = getEngineById(id);
-		newEngine.setEngine_denomination(engine.getEngine_denomination());
-		newEngine.setFuel_type(engine.getFuel_type());
+		newEngine.setDenomination(engine.getDenomination());
+		newEngine.setFuelType(engine.getFuelType());
 		newEngine.setHorsepower(engine.getHorsepower());
 		newEngine.setTransmission(engine.getTransmission());
 		
