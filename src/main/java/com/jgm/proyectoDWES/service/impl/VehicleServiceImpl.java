@@ -51,6 +51,11 @@ public class VehicleServiceImpl implements VehicleService{
 	public void deleteVehicle(Long id) {
 		veRep.deleteById(id);
 		
+	}
+
+	@Override
+	public Vehicle getVehicleByModel(String model) {
+		return veRep.findByModel(model);
 	}	
 }
 

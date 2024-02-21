@@ -9,5 +9,5 @@ import com.jgm.proyectoDWES.entities.Vehicle;
 
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
-
+	public Vehicle findByModel(String model);
 }

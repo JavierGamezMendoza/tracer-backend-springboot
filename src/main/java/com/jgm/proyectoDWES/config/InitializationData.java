@@ -71,16 +71,6 @@ public class InitializationData implements CommandLineRunner{
     	brand4.setCountry("united-states");	
     	brandRepository.save(brand4);
     	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
     	Engine engine = new Engine();
     	engine.setDenomination("twin-turbocharged 2.9L");
     	engine.setCylinders("V8");
@@ -89,12 +79,27 @@ public class InitializationData implements CommandLineRunner{
     	engine.setTransmission("manual");
     	engineRepository.save(engine);
     	
+    	Engine engine1 = new Engine();
+    	engine1.setDenomination("1800 Turbocharged 1.8T");
+    	engine1.setCylinders("I4");
+    	engine1.setFuelType("gas");
+    	engine1.setHorsepower("148 hp @ 6700 rpm");
+    	engine1.setTransmission("manual");
+    	engineRepository.save(engine1);
+    	
     	Vehicle vehicle = new Vehicle();
     	vehicle.setBrand(brand);
     	vehicle.setEngine(engine);
     	vehicle.setModel("F40");
     	vehicle.setProductionDate(1987);
     	vehicleRepository.save(vehicle);
+    	
+    	Vehicle vehicle1 = new Vehicle();
+    	vehicle1.setBrand(brand1);
+    	vehicle1.setEngine(engine1);
+    	vehicle1.setModel("A4 AEB");
+    	vehicle1.setProductionDate(1998);
+    	vehicleRepository.save(vehicle1);
     	
     	
     }

@@ -15,6 +15,8 @@ public interface VehicleService {
     Page<Vehicle> listAllVehicles(Pageable pageable);
 
     Vehicle getVehicleById(Long id);
+    
+    Vehicle getVehicleByModel(String model);
 
     Vehicle updateVehicle(Long id, Vehicle brand);
 
