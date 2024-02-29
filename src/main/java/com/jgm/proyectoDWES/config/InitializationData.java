@@ -5,8 +5,11 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import com.jgm.proyectoDWES.entities.User;
+import com.jgm.proyectoDWES.repository.UserRepository;
 import com.github.javafaker.Faker;
 import com.jgm.proyectoDWES.entities.Brand;
 import com.jgm.proyectoDWES.entities.Engine;
@@ -26,6 +29,12 @@ public class InitializationData implements CommandLineRunner{
     private final boolean deleteAllVehicles = false; 
     
     @Autowired
+    private UserRepository usuarioRepository;
+    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    
+    @Autowired
     private VehicleRepository vehicleRepository;
     
     @Autowired
@@ -37,9 +46,46 @@ public class InitializationData implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
     	
+    	
+    	
     	if (deleteAllVehicles) {
             vehicleRepository.deleteAll(); // Borra todos los libros existentes
         }
+    	
+    	try {
+    		// Usuario 1 - Rol USER
+            User usuario1 = new User();
+            usuario1.setFirstName("Alice");
+            usuario1.setLastName("Johnson");
+            usuario1.setEmail("alice.johnson@example.com");
+            usuario1.setPassword(passwordEncoder.encode("password123"));
+            usuario1.getRoles().add(Role.ROLE_USER);
+            usuarioRepository.save(usuario1);
+
+            // Usuario 2 - Rol ADMIN
+            User usuario2 = new User();
+            usuario2.setFirstName("Bob");
+            usuario2.setLastName("Smith");
+            usuario2.setEmail("bob.smith@example.com");
+            usuario2.setPassword(passwordEncoder.encode("password456"));
+            usuario2.getRoles().add(Role.ROLE_ADMIN);
+            usuarioRepository.save(usuario2);
+
+            // Usuario 3 - Rol USER
+            User usuario3 = new User();
+            usuario3.setFirstName("Carol");
+            usuario3.setLastName("Davis");
+            usuario3.setEmail("carol.davis@example.com");
+            usuario3.setPassword(passwordEncoder.encode("password789"));
+            usuario3.getRoles().add(Role.ROLE_USER);
+            usuarioRepository.save(usuario3);
+            
+            
+            
+            
+    	}catch(Exception e) {
+    		
+    	}
     	
     	Brand brand = new Brand();
     	brand.setName("ferrari");

@@ -21,7 +21,7 @@ import com.jgm.proyectoDWES.entities.Vehicle;
 import com.jgm.proyectoDWES.service.VehicleService;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/vehicles")
 @CrossOrigin(origins= "*")
 public class VehicleController {
 
@@ -29,7 +29,7 @@ public class VehicleController {
 	private VehicleService veSer;
 
 	// Endpoint para obtener un listado de libros, accesible solo por ROLE_USER
-	@GetMapping("/vehicles")
+	@GetMapping()
 	public ResponseEntity<Page<Vehicle>> listAllVehicles(@RequestParam(defaultValue = "0") int page,
 			@RequestParam(defaultValue = "10") int size) {
 
@@ -40,12 +40,12 @@ public class VehicleController {
 		return new ResponseEntity<>(vehicles, HttpStatus.OK);
 	}
 
-	@GetMapping("/vehicles/{id}")
+	@GetMapping("/{id}")
 	public Vehicle getVehicleById(@PathVariable Long id) {
 		return veSer.getVehicleById(id);
 	}
 	
-	@GetMapping("/models")
+	@GetMapping("/model")
 	public Vehicle getVehicleByModel(@RequestParam String model) {
 		System.out.println(model);
 		return veSer.getVehicleByModel(model);
@@ -56,12 +56,12 @@ public class VehicleController {
 		return veSer.addVehicle(vehicle);
 	}
 
-	@PutMapping("/vehicles/{id}")
+	@PutMapping("/vehicle/{id}")
 	public Vehicle updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicleDetails) {
 		return veSer.updateVehicle(id, vehicleDetails);
 	}
 
-	@DeleteMapping("/vehicles/{id}")
+	@DeleteMapping("/vehicle/{id}")
 	public void deleteVehicle(@PathVariable Long id) {
 		veSer.deleteVehicle(id);
 	}
