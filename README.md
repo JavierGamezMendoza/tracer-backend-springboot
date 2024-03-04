@@ -2,7 +2,7 @@
 
 ## Información general
 
-Proyecto final de Despliegue de Aplicaciones Web.
+Proyecto final de Desarrollo de Aplicaciones Web en Entorno Servidor.
 Esta aplicación realizada integramente en Springboot permite la administración de Vehículos, Motores y Marcas del mundo del motor a través de una API REST que gestiona los registros de una base de datos MySQL.
 
 ## Acciones
