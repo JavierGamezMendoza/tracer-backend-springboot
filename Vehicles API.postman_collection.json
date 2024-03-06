@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "fda01ea5-a5bd-4e26-ae2e-0ad0430852fc",
 		"name": "Vehicles API",
+		"description": "Proyecto final de Desarrollo de Aplicaciones Web en Entorno Servidor.  \nEsta aplicación realizada integramente en Springboot permite la administración de Vehículos, Motores y Marcas del mundo del motor a través de una API REST que gestiona los registros de una base de datos MySQL.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "32189217"
 	},
@@ -36,7 +37,8 @@
 								"auth",
 								"login"
 							]
-						}
+						},
+						"description": "Inicio de sesión con credenciales (email, password) que devuelve un token de autenticación."
 					},
 					"response": []
 				},
@@ -67,11 +69,13 @@
 								"auth",
 								"signup"
 							]
-						}
+						},
+						"description": "Registro de nuevos usuarios que requiere nombre, apellido, email y contraseña. Devuelve un token de autenticación al igual que el Login."
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Peticiones de registro e inicio de sesión de la API."
 		},
 		{
 			"name": "Get Requests",
@@ -100,7 +104,8 @@
 									"value": "A4%20AEB"
 								}
 							]
-						}
+						},
+						"description": "Obtiene un vehículo a través del nombre de su modelo."
 					},
 					"response": []
 				},
@@ -134,7 +139,8 @@
 								"engines",
 								"1"
 							]
-						}
+						},
+						"description": "Obtiene un motor a través de su id."
 					},
 					"response": []
 				},
@@ -156,7 +162,8 @@
 								"brands",
 								"1"
 							]
-						}
+						},
+						"description": "Obtiene una marca a través de su id."
 					},
 					"response": []
 				},
@@ -178,7 +185,8 @@
 								"vehicles",
 								"1"
 							]
-						}
+						},
+						"description": "Obtiene un vehiculo a través de su id."
 					},
 					"response": []
 				},
@@ -199,7 +207,8 @@
 								"v1",
 								"engines"
 							]
-						}
+						},
+						"description": "Obtiene una listado con todos los motores."
 					},
 					"response": []
 				},
@@ -220,7 +229,8 @@
 								"v1",
 								"vehicles"
 							]
-						}
+						},
+						"description": "Obtiene un listado con todos los vehículos."
 					},
 					"response": []
 				},
@@ -241,11 +251,52 @@
 								"v1",
 								"brands"
 							]
-						}
+						},
+						"description": "Obtiene un listado con todas las marcas de fabricantes de vehículos."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Brand By Country",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGljZS5qb2huc29uQGV4YW1wbGUuY29tIiwiaWF0IjoxNzA5NTQxODg3LCJleHAiOjE3MDk1Nzc4ODd9.D_86RikaBh88Hk2l3_AH8OnRO2PADIwPNCxm-_NVAws",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/engines/horsepower?horsepower=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"engines",
+								"horsepower"
+							],
+							"query": [
+								{
+									"key": "horsepower",
+									"value": "100"
+								}
+							]
+						},
+						"description": "Obtiene un listado de marcas filtrando por su país de origen."
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Peticiones GET que devuelven objetos completos de tipo vehicle, brand y engine."
 		},
 		{
 			"name": "Post Requests",
@@ -276,7 +327,8 @@
 								"v1",
 								"vehicles"
 							]
-						}
+						},
+						"description": "Peticiones POST que devuelven objetos completos de tipo vehicle, brand y engine si se realizan con éxito."
 					},
 					"response": []
 				},
@@ -306,7 +358,8 @@
 								"v1",
 								"engines"
 							]
-						}
+						},
+						"description": "Agrega un nuevo motor a la base de datos."
 					},
 					"response": []
 				},
@@ -336,7 +389,8 @@
 								"v1",
 								"brands"
 							]
-						}
+						},
+						"description": "Agrega una nueva marca a la base de datos."
 					},
 					"response": []
 				}
@@ -372,7 +426,8 @@
 								"engines",
 								"2"
 							]
-						}
+						},
+						"description": "Actualiza un registro de tipo engine con los nuevos valores facilitados."
 					},
 					"response": []
 				},
@@ -403,7 +458,8 @@
 								"brands",
 								"2"
 							]
-						}
+						},
+						"description": "Actualiza un registro de tipo marca con los nuevos valores solicitados."
 					},
 					"response": []
 				},
@@ -434,11 +490,13 @@
 								"vehicles",
 								"2"
 							]
-						}
+						},
+						"description": "Actualiza un regitro de tipo vehículo con los nuevos valores solicitados."
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Peticiones de tipo PUT que actualizan objetos de tipo vehícle, brand y engine. Devuelve el objeto actualizado si todo se resuelve satisfactoriamente."
 		},
 		{
 			"name": "Delete Requests",
@@ -461,7 +519,8 @@
 								"engines",
 								"2"
 							]
-						}
+						},
+						"description": "Elimina el registro de motor con la id facilitada."
 					},
 					"response": []
 				},
@@ -483,7 +542,8 @@
 								"vehicles",
 								"2"
 							]
-						}
+						},
+						"description": "Elimina el registro de vehículo con la id facilitada."
 					},
 					"response": []
 				},
@@ -505,11 +565,13 @@
 								"brands",
 								"2"
 							]
-						}
+						},
+						"description": "Elimina el registro de marca con la id facilitada."
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Peticiones de tipo DELETE que eliminan registros de tipo vehicle, brand y engine."
 		}
 	]
 }
